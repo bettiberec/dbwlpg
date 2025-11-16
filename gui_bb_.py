@@ -154,8 +154,8 @@ class bb_szakacskonyv(tk.Tk):
             if not elkeszitesi_ido_szoveg.isdigit():
                 messagebox.showerror("Hiba", "Az elkészítési időnek egész számnak kell lennie.")
                 return
-
             elkeszitesi_ido = int(elkeszitesi_ido_szoveg)
+
             recept = self.kezelo.recept_hozzaadas(
                 nev=nev,
                 hozzavalok=hozzavalok_lista,
