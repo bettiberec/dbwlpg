@@ -85,7 +85,7 @@ class bb_szakacskonyv(tk.Tk):
     def osszes_recept(self):
         self.tartalom_torles()
 
-        cimke = tk.Label(self.tartalom_keret, text="Összes receptjeim", font=("Arial", 16, "bold"))
+        cimke = tk.Label(self.tartalom_keret, text="Összes recept", font=("Arial", 16, "bold"))
         cimke.pack(pady=5)
 
         self.recept_lista_widgetek()
