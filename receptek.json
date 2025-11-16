@@ -1,0 +1,324 @@
+{
+  "kovetkezo_azonosito": 23,
+  "mentett_recept_azonositok": [
+    5
+  ],
+  "receptek": [
+    {
+      "azonosito": 1,
+      "nev": "Sonkás rántotta",
+      "hozzavalok": [
+        "tojás",
+        "sonka",
+        "só",
+        "bors",
+        "olaj"
+      ],
+      "elkeszitesi_ido": 10,
+      "leiras": "Felverjük a tojást, hozzáadjuk a sonkát, majd forró olajon megsütjük.",
+      "tipus": "reggeli"
+    },
+    {
+      "azonosito": 2,
+      "nev": "Tejbegríz",
+      "hozzavalok": [
+        "tej",
+        "gríz",
+        "cukor",
+        "kakaópor"
+      ],
+      "elkeszitesi_ido": 10,
+      "leiras": "A tejet felmelegítjük, belekeverjük a grízt és a cukrot, majd sűrűre főzzük.",
+      "tipus": "reggeli"
+    },
+    {
+      "azonosito": 3,
+      "nev": "Rántott csirke",
+      "hozzavalok": [
+        "csirkemell",
+        "liszt",
+        "tojás",
+        "zsemlemorzsa",
+        "olaj",
+        "só"
+      ],
+      "elkeszitesi_ido": 35,
+      "leiras": "A csirkét sózzuk, panírozzuk, majd bő olajban aranybarnára sütjük.",
+      "tipus": "ebéd"
+    },
+    {
+      "azonosito": 4,
+      "nev": "Magyar húsleves",
+      "hozzavalok": [
+        "marhahús",
+        "sárgarépa",
+        "fehérrépa",
+        "zeller",
+        "hagyma",
+        "só",
+        "bors"
+      ],
+      "elkeszitesi_ido": 90,
+      "leiras": "A húst és zöldségeket lassú tűzön puhára főzzük, majd leszűrjük.",
+      "tipus": "ebéd"
+    },
+    {
+      "azonosito": 5,
+      "nev": "Spagetti bolognai",
+      "hozzavalok": [
+        "darálthús",
+        "paradicsomszósz",
+        "hagyma",
+        "fokhagyma",
+        "tészta",
+        "só",
+        "bors"
+      ],
+      "elkeszitesi_ido": 40,
+      "leiras": "A darált húst megpirítjuk, hozzáadjuk a szószt, majd tésztával tálaljuk.",
+      "tipus": "ebéd"
+    },
+    {
+      "azonosito": 6,
+      "nev": "Gombapaprikás",
+      "hozzavalok": [
+        "gomba",
+        "hagyma",
+        "tejföl",
+        "paprika",
+        "olaj",
+        "só",
+        "bors"
+      ],
+      "elkeszitesi_ido": 30,
+      "leiras": "A hagymát megdinszteljük, hozzáadjuk a gombát és a paprikát, végül tejföllel sűrítjük.",
+      "tipus": "ebéd"
+    },
+    {
+      "azonosito": 7,
+      "nev": "Csirkés alfredo tészta",
+      "hozzavalok": [
+        "csirkemell",
+        "tejszín",
+        "parmezán",
+        "tészta",
+        "vaj",
+        "só",
+        "bors"
+      ],
+      "elkeszitesi_ido": 25,
+      "leiras": "A csirkét megpirítjuk, tejszínt és sajtot adunk hozzá, majd tésztával keverjük.",
+      "tipus": "vacsora"
+    },
+    {
+      "azonosito": 8,
+      "nev": "Paradicsomos rizs",
+      "hozzavalok": [
+        "rizs",
+        "paradicsomsűrítmény",
+        "hagyma",
+        "olaj",
+        "só"
+      ],
+      "elkeszitesi_ido": 20,
+      "leiras": "A rizst megpirítjuk olajon, hozzáadjuk a hagymát és a paradicsomot, majd puhára főzzük.",
+      "tipus": "vacsora"
+    },
+    {
+      "azonosito": 9,
+      "nev": "Tonhalas tészta",
+      "hozzavalok": [
+        "tonhal konzerv",
+        "tészta",
+        "tejszín",
+        "fokhagyma",
+        "só",
+        "bors"
+      ],
+      "elkeszitesi_ido": 15,
+      "leiras": "A tonhalat összekeverjük tejszínnel, fokhagymával, majd tésztára öntjük.",
+      "tipus": "vacsora"
+    },
+    {
+      "azonosito": 10,
+      "nev": "Rántotta zöldségekkel",
+      "hozzavalok": [
+        "tojás",
+        "paprika",
+        "hagyma",
+        "vaj",
+        "só",
+        "bors"
+      ],
+      "elkeszitesi_ido": 10,
+      "leiras": "A zöldségeket megpirítjuk, hozzáadjuk a tojást, majd készre sütjük.",
+      "tipus": "reggeli"
+    },
+    {
+      "azonosito": 11,
+      "nev": "Csirkemell sült burgonyával",
+      "hozzavalok": [
+        "csirkemell",
+        "burgonya",
+        "olaj",
+        "só",
+        "bors"
+      ],
+      "elkeszitesi_ido": 45,
+      "leiras": "A csirkét fűszerezzük, a burgonyát szeleteljük, majd együtt sütjük.",
+      "tipus": "ebéd"
+    },
+    {
+      "azonosito": 12,
+      "nev": "Zabkása mézzel",
+      "hozzavalok": [
+        "zabpehely",
+        "tej",
+        "méz",
+        "fahéj"
+      ],
+      "elkeszitesi_ido": 7,
+      "leiras": "A zabpelyhet tejben megfőzzük, majd mézzel és fahéjjal ízesítjük.",
+      "tipus": "reggeli"
+    },
+    {
+      "azonosito": 13,
+      "nev": "Sült virsli mustárral",
+      "hozzavalok": [
+        "virsli",
+        "olaj",
+        "mustár",
+        "kenyér"
+      ],
+      "elkeszitesi_ido": 8,
+      "leiras": "A virslit megpirítjuk, majd mustárral tálaljuk.",
+      "tipus": "vacsora"
+    },
+    {
+      "azonosito": 14,
+      "nev": "Tojásleves",
+      "hozzavalok": [
+        "tojás",
+        "liszt",
+        "páprika",
+        "só",
+        "víz"
+      ],
+      "elkeszitesi_ido": 15,
+      "leiras": "A lisztet pirítjuk, fűszerezzük, majd belecsurgatjuk a tojást.",
+      "tipus": "ebéd"
+    },
+    {
+      "azonosito": 15,
+      "nev": "Rakott krumpli",
+      "hozzavalok": [
+        "krumpli",
+        "tojás",
+        "tejföl",
+        "kolbász",
+        "só"
+      ],
+      "elkeszitesi_ido": 60,
+      "leiras": "A főtt krumplit, tojást és kolbászt rétegezzük, leöntjük tejföllel és sütjük.",
+      "tipus": "ebéd"
+    },
+    {
+      "azonosito": 16,
+      "nev": "Tejfölös csirkemell",
+      "hozzavalok": [
+        "csirkemell",
+        "tejföl",
+        "fokhagyma",
+        "só",
+        "bors"
+      ],
+      "elkeszitesi_ido": 30,
+      "leiras": "A csirkét megsütjük, tejfölös fokhagymás szósszal leöntjük.",
+      "tipus": "vacsora"
+    },
+    {
+      "azonosito": 17,
+      "nev": "Túrós tészta",
+      "hozzavalok": [
+        "tészta",
+        "túró",
+        "tejföl",
+        "szalonna",
+        "só"
+      ],
+      "elkeszitesi_ido": 20,
+      "leiras": "A tésztát túróval, tejföllel és sült szalonnával keverjük össze.",
+      "tipus": "vacsora"
+    },
+    {
+      "azonosito": 18,
+      "nev": "Csirkepaprikás",
+      "hozzavalok": [
+        "csirkecomb",
+        "hagyma",
+        "paprika",
+        "tejföl",
+        "olaj",
+        "só"
+      ],
+      "elkeszitesi_ido": 60,
+      "leiras": "A csirkét hagymán és paprikán főzzük, majd tejföllel sűrítjük.",
+      "tipus": "ebéd"
+    },
+    {
+      "azonosito": 19,
+      "nev": "Tavaszi saláta",
+      "hozzavalok": [
+        "saláta",
+        "uborka",
+        "répa",
+        "citromlé",
+        "só"
+      ],
+      "elkeszitesi_ido": 10,
+      "leiras": "A zöldségeket felszeleteljük, majd citromlével meglocsoljuk.",
+      "tipus": "vacsora"
+    },
+    {
+      "azonosito": 20,
+      "nev": "Melegszendvics",
+      "hozzavalok": [
+        "kenyér",
+        "vaj",
+        "sonka",
+        "sajt"
+      ],
+      "elkeszitesi_ido": 8,
+      "leiras": "A kenyérre vajat, sonkát és sajtot teszünk, majd sütőben rápirítunk.",
+      "tipus": "reggeli"
+    },
+    {
+      "azonosito": 21,
+      "nev": "Grillezett csirkesaláta",
+      "hozzavalok": [
+        "csirkemell",
+        "saláta",
+        "paradicsom",
+        "olívaolaj",
+        "só",
+        "bors"
+      ],
+      "elkeszitesi_ido": 20,
+      "leiras": "A csirkét megsütjük, felszeleteljük és salátával tálaljuk.",
+      "tipus": "ebéd"
+    },
+    {
+      "azonosito": 22,
+      "nev": "Fokhagymás pirítós",
+      "hozzavalok": [
+        "kenyér",
+        "vaj",
+        "fokhagyma",
+        "só"
+      ],
+      "elkeszitesi_ido": 5,
+      "leiras": "A kenyeret megpirítjuk, majd rákenjük a fokhagymás vajat.",
+      "tipus": "vacsora"
+    }
+  ]
+}
