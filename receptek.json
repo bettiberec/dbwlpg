@@ -1,7 +1,9 @@
 {
   "kovetkezo_azonosito": 23,
   "mentett_recept_azonositok": [
-    5
+    3,
+    16,
+    20
   ],
   "receptek": [
     {

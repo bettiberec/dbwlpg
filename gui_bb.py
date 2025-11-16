@@ -2,16 +2,17 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from typing import List, Optional
 
-from backend import ReceptKezelo, Recept
+from backend import Recept
+from app_bb import bb_app
 
 
 class bb_szakacskonyv(tk.Tk):
-    def __init__(self, kezelo: ReceptKezelo):
+    def __init__(self, app: bb_app):
         super().__init__()
         self.title("Receptes projekt")
         self.geometry("800x600")
 
-        self.kezelo = kezelo
+        self.app = app                           # <-- régen self.kezelo volt
         self.protocol("WM_DELETE_WINDOW", self.ablak_bezarasa)
 
         self.gomb_keret = tk.Frame(self)
@@ -31,6 +32,42 @@ class bb_szakacskonyv(tk.Tk):
     def tartalom_torles(self):
         for widget in self.tartalom_keret.winfo_children():
             widget.destroy()
+
+    def recept_lista_widgetek(self):
+        lista_keret = tk.Frame(self.tartalom_keret)
+        lista_keret.pack(fill=tk.BOTH, expand=True)
+
+        self.recept_lista = tk.Listbox(lista_keret)
+        self.recept_lista.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+        gorgeto = tk.Scrollbar(lista_keret, orient=tk.VERTICAL, command=self.recept_lista.yview)
+        gorgeto.pack(side=tk.RIGHT, fill=tk.Y)
+        self.recept_lista.config(yscrollcommand=gorgeto.set)
+
+        gomb_keret = tk.Frame(self.tartalom_keret)
+        gomb_keret.pack(fill=tk.X, pady=5)
+
+        tk.Button(gomb_keret, text="Részletek", command=self.reszletek).pack(side=tk.LEFT, padx=5)
+        tk.Button(gomb_keret, text="Szerkesztés", command=self.recept_szerkesztes).pack(side=tk.LEFT, padx=5)
+        tk.Button(gomb_keret, text="Kedvencekhez", command=self.kedvenc_recept_mentes).pack(side=tk.LEFT, padx=5)
+        tk.Button(gomb_keret, text="Törlés", command=self.recept_torles).pack(side=tk.LEFT, padx=5)
+        tk.Button(gomb_keret, text="Kedvencekből törlés", command=self.mentettbol_torles).pack(side=tk.LEFT, padx=5)
+
+    def feltolt_recept_lista(self, receptek: List[Recept]):
+        self.aktualis_receptek_lista = receptek
+        self.recept_lista.delete(0, tk.END)
+        for r in receptek:
+            szoveg = f"{r.nev} ({r.tipus}, {r.elkeszitesi_ido} perc)"
+            self.recept_lista.insert(tk.END, szoveg)
+
+    def kivalasztott_recept(self) -> Optional[Recept]:
+        kivalasztas = self.recept_lista.curselection()
+        if not kivalasztas:
+            return None
+        index = kivalasztas[0]
+        if index < 0 or index >= len(self.aktualis_receptek_lista):
+            return None
+        return self.aktualis_receptek_lista[index]
 
     def keresesesi_nezet(self):
         self.tartalom_torles()
@@ -66,21 +103,13 @@ class bb_szakacskonyv(tk.Tk):
             hozzavalo = hozzavalo_mezo.get().strip() or None
             tipus = tipus_valtozo.get().strip() or None
 
-            talalatok = self.kezelo.keres(nev=nev, hozzavalo=hozzavalo, tipus=tipus)
-
+            talalatok = self.app.keres(nev=nev, hozzavalo=hozzavalo, tipus=tipus)
             self.feltolt_recept_lista(talalatok)
 
         keres_gomb = tk.Button(keret, text="Keresés", command=recept_keresese)
         keres_gomb.grid(row=3, column=0, columnspan=2, pady=5)
 
         self.recept_lista_widgetek()
-
-    def feltolt_recept_lista(self, receptek: List[Recept]):
-        self.aktualis_receptek_lista = receptek
-        self.recept_lista.delete(0, tk.END)
-        for r in receptek:
-            szoveg = f"{r.nev} ({r.tipus}, {r.elkeszitesi_ido} perc)"
-            self.recept_lista.insert(tk.END, szoveg)
 
     def osszes_recept(self):
         self.tartalom_torles()
@@ -89,8 +118,7 @@ class bb_szakacskonyv(tk.Tk):
         cimke.pack(pady=5)
 
         self.recept_lista_widgetek()
-        self.feltolt_recept_lista(self.kezelo.listaz_minden())
-
+        self.feltolt_recept_lista(self.app.listaz_minden())
 
     def mentett_receptek(self):
         self.tartalom_torles()
@@ -99,7 +127,7 @@ class bb_szakacskonyv(tk.Tk):
         cimke.pack(pady=5)
 
         self.recept_lista_widgetek()
-        self.feltolt_recept_lista(self.kezelo.listaz_mentettek())
+        self.feltolt_recept_lista(self.app.listaz_mentettek())
 
     def bb_uj_recept(self):
         self.tartalom_torles()
@@ -112,11 +140,11 @@ class bb_szakacskonyv(tk.Tk):
 
         tk.Label(uj_recept_keret, text="Név:").grid(row=0, column=0, sticky="w", pady=2)
         nev_mezo = tk.Entry(uj_recept_keret, width=40)
-        nev_mezo.grid(row=0, column=1, pady=2)
+        nev_mezo.grid(row=0, column=1, sticky="w", pady=2)
 
         tk.Label(uj_recept_keret, text="Hozzávalók (vesszővel elválasztva):").grid(row=1, column=0, sticky="w", pady=2)
         hozzavalok_mezo = tk.Entry(uj_recept_keret, width=40)
-        hozzavalok_mezo.grid(row=1, column=1, pady=2)
+        hozzavalok_mezo.grid(row=1, column=1, sticky="w", pady=2)
 
         tk.Label(uj_recept_keret, text="Elkészítési idő (perc):").grid(row=2, column=0, sticky="w", pady=2)
         elkeszitesi_ido_mezo = tk.Entry(uj_recept_keret, width=15)
@@ -129,9 +157,9 @@ class bb_szakacskonyv(tk.Tk):
             textvariable=tipus_valtozo,
             values=["reggeli", "ebéd", "vacsora"],
             state="readonly",
-            width=37,
+            width=12,
         )
-        tipus_lenyilo.grid(row=3, column=1, pady=2)
+        tipus_lenyilo.grid(row=3, column=1, sticky="w", pady=2)
         tipus_lenyilo.current(0)
 
         tk.Label(uj_recept_keret, text="Leírás:").grid(row=4, column=0, sticky="nw", pady=2)
@@ -157,16 +185,16 @@ class bb_szakacskonyv(tk.Tk):
                 return
             elkeszitesi_ido = int(elkeszitesi_ido_szoveg)
 
-            recept = self.kezelo.recept_hozzaadas(
+            self.app.uj_recept(
                 nev=nev,
                 hozzavalok=hozzavalok_lista,
                 elkeszitesi_ido=elkeszitesi_ido,
                 leiras=leiras,
                 tipus=tipus,
             )
-            self.kezelo.mentes_fajlba("receptek.json")
+            self.app.mentes("receptek.json")
 
-            messagebox.showinfo("Siker", f"Recept sikeresen hozzáadva!")
+            messagebox.showinfo("Siker", "Recept sikeresen hozzáadva!")
 
             nev_mezo.delete(0, tk.END)
             hozzavalok_mezo.delete(0, tk.END)
@@ -175,35 +203,6 @@ class bb_szakacskonyv(tk.Tk):
 
         hozzaadas_gomb = tk.Button(self.tartalom_keret, text="Recept hozzáadása", command=recept_hozzaadasa)
         hozzaadas_gomb.pack(pady=10)
-
-    def recept_lista_widgetek(self):
-        lista_keret = tk.Frame(self.tartalom_keret)
-        lista_keret.pack(fill=tk.BOTH, expand=True)
-
-        self.recept_lista = tk.Listbox(lista_keret)
-        self.recept_lista.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-
-        gorgeto = tk.Scrollbar(lista_keret, orient=tk.VERTICAL, command=self.recept_lista.yview)
-        gorgeto.pack(side=tk.RIGHT, fill=tk.Y)
-        self.recept_lista.config(yscrollcommand=gorgeto.set)
-
-        gomb_keret = tk.Frame(self.tartalom_keret)
-        gomb_keret.pack(fill=tk.X, pady=5)
-
-        tk.Button(gomb_keret, text="Részletek", command=self.reszletek).pack(side=tk.LEFT, padx=5)
-        tk.Button(gomb_keret, text="Szerkesztés", command=self.recept_szerkesztes).pack(side=tk.LEFT, padx=5)
-        tk.Button(gomb_keret, text="Kedvencekhez", command=self.kedvenc_recept_mentes).pack(side=tk.LEFT, padx=5)
-        tk.Button(gomb_keret, text="Törlés", command=self.recept_torles).pack(side=tk.LEFT, padx=5)
-        tk.Button(gomb_keret, text="Kedvencekből törlés", command=self.mentettbol_torles).pack(side=tk.LEFT, padx=5)
-
-    def kivalasztott_recept(self) -> Optional[Recept]:
-        kivalasztas = self.recept_lista.curselection()
-        if not kivalasztas:
-            return None
-        index = kivalasztas[0]
-        if index < 0 or index >= len(self.aktualis_receptek_lista):
-            return None
-        return self.aktualis_receptek_lista[index]
 
     def reszletek(self):
         recept = self.kivalasztott_recept()
@@ -230,8 +229,8 @@ class bb_szakacskonyv(tk.Tk):
             messagebox.showwarning("Figyelem", "Nincs kiválasztott recept.")
             return
 
-        if self.kezelo.mentes_recept(recept.azonosito):
-            self.kezelo.mentes_fajlba("receptek.json")
+        if self.app.mentes_recept(recept.azonosito):
+            self.app.mentes("receptek.json")
             messagebox.showinfo("Siker", "Recept elmentve a kedvencek közé.")
         else:
             messagebox.showwarning("Info", "Már a kedvencek között van, vagy nem sikerült menteni.")
@@ -245,10 +244,10 @@ class bb_szakacskonyv(tk.Tk):
         if not messagebox.askyesno("Megerősítés", "Biztosan törlöd ezt a receptet?"):
             return
 
-        if self.kezelo.toroles_recept(recept.azonosito):
-            self.kezelo.mentes_fajlba("receptek.json")
+        if self.app.torles_recept(recept.azonosito):
+            self.app.mentes("receptek.json")
             messagebox.showinfo("Siker", "Recept törölve.")
-            self.feltolt_recept_lista(self.kezelo.listaz_minden())
+            self.feltolt_recept_lista(self.app.listaz_minden())
         else:
             messagebox.showerror("Hiba", "Nem sikerült törölni a receptet.")
 
@@ -310,7 +309,7 @@ class bb_szakacskonyv(tk.Tk):
                 messagebox.showerror("Hiba", "Az időnek számnak kell lennie.")
                 return
 
-            self.kezelo.recept_frissitese(
+            self.app.recept_frissitese(
                 azonosito=recept.azonosito,
                 nev=uj_nev,
                 hozzavalok=uj_hozzavalok,
@@ -318,10 +317,10 @@ class bb_szakacskonyv(tk.Tk):
                 leiras=uj_leiras,
                 tipus=uj_tipus,
             )
-            self.kezelo.mentes_fajlba("receptek.json")
+            self.app.mentes("receptek.json")
             messagebox.showinfo("Siker", "Recept frissítve.")
             ablak.destroy()
-            self.feltolt_recept_lista(self.kezelo.listaz_minden())
+            self.feltolt_recept_lista(self.app.listaz_minden())
 
         tk.Button(ablak, text="Változtatások mentése", command=valtoztatasok_mentese).pack(pady=10)
 
@@ -331,21 +330,21 @@ class bb_szakacskonyv(tk.Tk):
             messagebox.showwarning("Figyelem", "Nincs kiválasztott recept.")
             return
 
-        if self.kezelo.torol_mentettbol(recept.azonosito):
-            self.kezelo.mentes_fajlba("receptek.json")
+        if self.app.torol_mentettbol(recept.azonosito):
+            self.app.mentes("receptek.json")
             messagebox.showinfo("Siker", "Kedvencekből törölve.")
-            self.feltolt_recept_lista(self.kezelo.listaz_mentettek())
+            self.feltolt_recept_lista(self.app.listaz_mentettek())
         else:
             messagebox.showwarning("Figyelem", "Ez a recept nincs a kedvencek között.")
 
     def ablak_bezarasa(self):
-        self.kezelo.mentes_fajlba("receptek.json")
+        self.app.mentes("receptek.json")
         self.destroy()
 
-def futtatas():
-    kezelo = ReceptKezelo()
-    kezelo.betoltes_fajlbol("receptek.json")
-    app = bb_szakacskonyv(kezelo)
-    app.mainloop()
-    kezelo.mentes_fajlba("receptek.json")
 
+def futtatas():
+    alkalmazas = bb_app()
+    alkalmazas.betoltes("receptek.json")
+    app = bb_szakacskonyv(alkalmazas)
+    app.mainloop()
+    alkalmazas.mentes("receptek.json")
