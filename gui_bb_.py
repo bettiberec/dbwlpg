@@ -121,6 +121,7 @@ class bb_szakacskonyv(tk.Tk):
         tk.Label(uj_recept_keret, text="Elkészítési idő (perc):").grid(row=2, column=0, sticky="w", pady=2)
         elkeszitesi_ido_mezo = tk.Entry(uj_recept_keret, width=15)
         elkeszitesi_ido_mezo.grid(row=2, column=1, sticky="w", pady=2)
+
         tk.Label(uj_recept_keret, text="Típus:").grid(row=3, column=0, sticky="w", pady=2)
         tipus_valtozo = tk.StringVar()
         tipus_lenyilo = ttk.Combobox(
@@ -163,10 +164,10 @@ class bb_szakacskonyv(tk.Tk):
                 leiras=leiras,
                 tipus=tipus,
             )
-
             self.kezelo.mentes_fajlba("receptek.json")
 
             messagebox.showinfo("Siker", f"Recept sikeresen hozzáadva!")
+
             nev_mezo.delete(0, tk.END)
             hozzavalok_mezo.delete(0, tk.END)
             elkeszitesi_ido_mezo.delete(0, tk.END)
