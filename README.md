@@ -1,54 +1,49 @@
-Szakácskönyv
+# Szakácskönyv
 
+Hallgató: Berec Bettina
+
+## Feladat leírás
 Ez a projekt egy egyszerű receptkezelő alkalmazás, amely Pythonban készült, Tkinter grafikus felülettel.
 A program segítségével recepteket lehet hozzáadni, keresni, szerkeszteni, törölni és elmenteni.
 Minden adat automatikusan mentésre kerül egy receptek.json fájlba, így a receptek újraindítás után is megmaradnak.
 
----Funkciók---
- 
----Keresés---
- A keresőfelületen több feltétel alapján kereshetünk:
-   -név alapján
-   -hozzávaló alapján
-   -ételtípus alapján (reggeli, ebéd, vacsora)
-   A találatokat listában jeleníti meg.
+## Modulok és tartalmuk
 
----Összes recept---
-  -Megjeleníti az összes eddig hozzáadott receptet.
-
----Mentett receptek---
- -Lehetőség van recepteket „kedvencként” elmenteni, majd külön megtekinteni őket.
- -A kedvenceket külön el is lehet távolítani.
-
----Új recept hozzáadása---
-  Új recept létrehozásához az alábbi mezők szerepelnek:
-    -Név
-    -Hozzávalók (vesszővel elválasztva)
-    -Elkészítési idő
-    -Leírás
-    -Típus (reggeli, ebéd, vacsora)
-
----Recept szerkesztése---
-   Bármely meglévő recept adatai szerkeszthetők:
-     -név
-     -hozzávalók
-     -elkészítési idő
-     -leírás
-     -típus
-   Szerkesztés után a módosítások automatikusan mentődnek.
-
----Recept törlése---
-  Teljes recept törölhető a listából.
-  Ha korábban el volt mentve kedvencként, onnan is automatikusan eltávolítja.
-
----Adatmentés---
-  A projekt minden receptet egy JSON fájlban tárol: receptek.json
-  Induláskor a program beolvassa a fájl tartalmát, így az adatok nem vesznek el.
-  Kilépéskor és minden változtatás után automatikusan menti a recepteket.
-
----Technológiák---
- -Python 3
- -Tkinter GUI
- -Dataclasses
- -JSON fájlkezelés
-
+- backend.py
+  - Osztályok:
+    - Recept
+    - ReceptKezelo
+  - Függvények:
+    - recept_hozzaadas
+    - listaz_minden
+    - listaz_mentettek
+    - mentes_recept
+    - keres
+    - toroles_recept
+    - recept_frissitese
+    - torol_mentettbol
+    - mentes_fajlba
+    - betoltes_fajlbol
+- gui_bb.py
+  - Osztály:
+    - bb_szakacskonyv
+  - Függvények:
+    - tartalom_torles
+    - keresesesi_nezet
+    - recept_keresese
+    - feltolt_recept_lista
+    - osszes_recept
+    - mentett_receptek
+    - bb_uj_recept
+    - recept_hozzaadasa
+    - recept_lista_widgetek
+    - kivalasztott_recept
+    - reszletek
+    - kedvenc_recept_mentes
+    - recept_torles
+    - recept_szerkesztes
+    - valtoztatasok_mentese
+    - mentettbol_torles
+    - ablak_bezarasa
+    - futtatas
+- main.py
