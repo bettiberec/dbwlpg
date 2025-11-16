@@ -342,7 +342,7 @@ class bb_szakacskonyv(tk.Tk):
         self.destroy()
 
 
-def futtatas():
+def run():
     alkalmazas = bb_app()
     alkalmazas.betoltes("receptek.json")
     app = bb_szakacskonyv(alkalmazas)

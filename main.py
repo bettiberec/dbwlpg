@@ -1,4 +1,4 @@
-from gui_bb import futtatas
+from gui_bb import run
 
 if __name__ == "__main__":
-    futtatas()
+    run()
