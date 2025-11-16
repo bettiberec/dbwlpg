@@ -5,7 +5,7 @@ from typing import List, Optional
 from backend import ReceptKezelo, Recept
 
 
-class Szakacskonyv(tk.Tk):
+class bb_szakacskonyv(tk.Tk):
     def __init__(self, kezelo: ReceptKezelo):
         super().__init__()
         self.title("Receptes projekt")
@@ -20,7 +20,7 @@ class Szakacskonyv(tk.Tk):
         tk.Button(self.gomb_keret, text="Keresés", command=self.keresesesi_nezet).pack(side=tk.LEFT, padx=5)
         tk.Button(self.gomb_keret, text="Receptjeim", command=self.osszes_recept).pack(side=tk.LEFT, padx=5)
         tk.Button(self.gomb_keret, text="Mentett receptek", command=self.mentett_receptek).pack(side=tk.LEFT, padx=5)
-        tk.Button(self.gomb_keret, text="Recept hozzáadása", command=self.uj_recept).pack(side=tk.LEFT, padx=5)
+        tk.Button(self.gomb_keret, text="Recept hozzáadása", command=self.bb_uj_recept).pack(side=tk.LEFT, padx=5)
 
         self.tartalom_keret = tk.Frame(self)
         self.tartalom_keret.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
@@ -101,7 +101,7 @@ class Szakacskonyv(tk.Tk):
         self.recept_lista_widgetek()
         self.feltolt_recept_lista(self.kezelo.listaz_mentettek())
 
-    def uj_recept(self):
+    def bb_uj_recept(self):
         self.tartalom_torles()
 
         cimke = tk.Label(self.tartalom_keret, text="Új recept hozzáadása", font=("Arial", 16, "bold"))
@@ -344,7 +344,7 @@ class Szakacskonyv(tk.Tk):
 def futtatas():
     kezelo = ReceptKezelo()
     kezelo.betoltes_fajlbol("receptek.json")
-    app = Szakacskonyv(kezelo)
+    app = bb_szakacskonyv(kezelo)
     app.mainloop()
     kezelo.mentes_fajlba("receptek.json")
 
