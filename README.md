@@ -24,25 +24,37 @@ Minden adat automatikusan mentésre kerül egy receptek.json fájlba, így a rec
     - torol_mentettbol
     - mentes_fajlba
     - betoltes_fajlbol
+- app_bb.py
+    - Osztály:
+        - app_bb
+    - Függvények:
+      - betoltes
+      - mentes
+      - listaz_minden
+      - listaz_mentettek
+      - keres
+      - uj_recept
+      - recept_frissitese
+      - torles_recept
+      - mentes_recept
+      - torol_mentettbol
 - gui_bb.py
   - Osztály:
     - bb_szakacskonyv
   - Függvények:
     - tartalom_torles
+    - recept_lista_widgetek
+    - feltolt_recept_lista
+    - kivalasztott_recept
     - keresesesi_nezet
     - recept_keresese
-    - feltolt_recept_lista
     - osszes_recept
     - mentett_receptek
     - bb_uj_recept
-    - recept_hozzaadasa
-    - recept_lista_widgetek
-    - kivalasztott_recept
     - reszletek
     - kedvenc_recept_mentes
     - recept_torles
     - recept_szerkesztes
-    - valtoztatasok_mentese
     - mentettbol_torles
     - ablak_bezarasa
     - futtatas
