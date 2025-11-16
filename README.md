@@ -7,18 +7,18 @@ Minden adat automatikusan mentésre kerül egy receptek.json fájlba, így a rec
 ---Funkciók---
  
 ////Keresés////
-  A keresőfelületen több feltétel alapján kereshetünk:
-    -név alapján
-    -hozzávaló alapján
-    -ételtípus alapján (reggeli, ebéd, vacsora)
-  A találatokat listában jeleníti meg.
+ A keresőfelületen több feltétel alapján kereshetünk:
+   -név alapján
+   -hozzávaló alapján
+   -ételtípus alapján (reggeli, ebéd, vacsora)
+   A találatokat listában jeleníti meg.
 
 ////Összes recept////
   -Megjeleníti az összes eddig hozzáadott receptet.
 
 ////Mentett receptek////
-  -Lehetőség van recepteket „kedvencként” elmenteni, majd külön megtekinteni őket.
-  -A kedvenceket külön el is lehet távolítani.
+ -Lehetőség van recepteket „kedvencként” elmenteni, majd külön megtekinteni őket.
+ -A kedvenceket külön el is lehet távolítani.
 
 ////Új recept hozzáadása////
   Új recept létrehozásához az alábbi mezők szerepelnek:
@@ -29,13 +29,13 @@ Minden adat automatikusan mentésre kerül egy receptek.json fájlba, így a rec
     -Típus (reggeli, ebéd, vacsora)
 
 ////Recept szerkesztése////
-  Bármely meglévő recept adatai szerkeszthetők:
-    -név
-    -hozzávalók
-    -elkészítési idő
-    -leírás
-    -típus
-  Szerkesztés után a módosítások automatikusan mentődnek.
+   Bármely meglévő recept adatai szerkeszthetők:
+     -név
+     -hozzávalók
+     -elkészítési idő
+     -leírás
+     -típus
+   Szerkesztés után a módosítások automatikusan mentődnek.
 
 ////Recept törlése////
   Teljes recept törölhető a listából.
